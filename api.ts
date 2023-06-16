@@ -7,8 +7,8 @@ let responseIndex = 0;
 let cajeros: ATM[] = [];
 
 const router = new Router();
-router.get("/best/:coordinates", async (ctx) => {
-  cajeros = await handleATMRequest(ctx.params.coordinates);
+router.get("/best/:location", async (ctx) => {
+  cajeros = await handleATMRequest(ctx.params.location);
   ctx.response.body = cajeros[0];
 }).get("/next", (ctx) => {
   if (responseIndex < cajeros.length - 1) {
