@@ -24,6 +24,9 @@ router.get("/best/:coordinates", async (ctx) => {
   } else {
     ctx.response.body = { error: "No previous ATMs" };
   }
+}).get("/privacy-policy", (ctx) => {
+  const policy = Deno.readTextFileSync("./privacyPolicy.html");
+  ctx.response.body = policy;
 });
 
 const cors = await oakCors({
